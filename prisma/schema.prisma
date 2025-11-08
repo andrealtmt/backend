@@ -7,15 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Participante {
+model participante {
   id             Int     @id @default(autoincrement())
   nombre         String
   apellidos      String
-  email          String  @unique
+  email          String  @unique(map: "Participante_email_key")
   twitter        String
   ocupacion      String
   avatar         String
   aceptoTerminos Boolean
 
-  @@index([nombre, apellidos])
+  @@index([nombre, apellidos], map: "Participante_nombre_apellidos_idx")
 }
